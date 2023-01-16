@@ -12,6 +12,7 @@ class Calculator(QWidget):
         self.label2 = QLabel("Number 2:")
         self.line_edit2 = QLineEdit()
         self.add_button = QPushButton("Add")
+        self.sub_button = QPushButton("Sub")
         self.result_label = QLabel("Result:")
         self.result = QLabel("0")
 
@@ -22,6 +23,7 @@ class Calculator(QWidget):
         layout.addWidget(self.label2)
         layout.addWidget(self.line_edit2)
         layout.addWidget(self.add_button)
+        layout.addWidget(self.sub_button)
         layout.addWidget(self.result_label)
         layout.addWidget(self.result)
 
@@ -30,11 +32,18 @@ class Calculator(QWidget):
 
         # Connect button to function
         self.add_button.clicked.connect(self.add_numbers)
+        self.sub_button.clicked.connect(self.sub_numbers)
 
     def add_numbers(self):
         num1 = float(self.line_edit1.text())
         num2 = float(self.line_edit2.text())
         result = num1 + num2
+        self.result.setText(str(result))
+
+    def sub_numbers(self):
+        num1 = float(self.line_edit1.text())
+        num2 = float(self.line_edit2.text())
+        result = num1 - num2
         self.result.setText(str(result))
 
 if __name__ == '__main__':
